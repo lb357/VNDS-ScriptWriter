@@ -1,0 +1,248 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2ho1s5tmed2e"]
+
+[ext_resource type="Script" path="res://objects/nodes/screen/screen.gd" id="1_5uw5a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2iku7"]
+bg_color = Color(0.752941, 0.25098, 0.25098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.501961, 0, 0.12549)
+border_blend = true
+
+[node name="Screen" type="GraphNode"]
+offset_right = 479.0
+offset_bottom = 293.0
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_2iku7")
+title = "Screen"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(0.752941, 0.25098, 0.25098, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color(1, 1, 1, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = true
+slot/2/right_type = 0
+slot/2/right_color = Color(1, 1, 1, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
+script = ExtResource("1_5uw5a")
+
+[node name="Input" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "In"
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="StartSeparator" type="HSeparator" parent="Container"]
+layout_mode = 2
+
+[node name="Screen" type="TextureRect" parent="Container"]
+layout_mode = 2
+expand_mode = 5
+
+[node name="SelectButton" type="MenuButton" parent="Container"]
+layout_mode = 2
+text = "Select background"
+
+[node name="AddButton" type="MenuButton" parent="Container"]
+layout_mode = 2
+text = "Add object"
+
+[node name="ControlSeparator" type="HSeparator" parent="Container"]
+layout_mode = 2
+
+[node name="ControlButton" type="OptionButton" parent="Container"]
+layout_mode = 2
+
+[node name="HighlightButton" type="CheckButton" parent="Container"]
+layout_mode = 2
+text = "Highlight object"
+alignment = 2
+
+[node name="SettingsButton" type="CheckButton" parent="Container"]
+layout_mode = 2
+disabled = true
+text = "Show settings"
+alignment = 2
+
+[node name="SettingsContainer" type="VBoxContainer" parent="Container"]
+visible = false
+layout_mode = 2
+
+[node name="FlipButton" type="CheckButton" parent="Container/SettingsContainer"]
+layout_mode = 2
+text = "Flip"
+alignment = 2
+
+[node name="PLText" type="Label" parent="Container/SettingsContainer"]
+layout_mode = 2
+text = "Point Left"
+
+[node name="PLSlider" type="HSlider" parent="Container/SettingsContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.005
+scrollable = false
+tick_count = 200
+ticks_on_borders = true
+
+[node name="PTText" type="Label" parent="Container/SettingsContainer"]
+layout_mode = 2
+text = "Point Top"
+
+[node name="PTSlider" type="HSlider" parent="Container/SettingsContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.005
+scrollable = false
+tick_count = 200
+ticks_on_borders = true
+
+[node name="PRText" type="Label" parent="Container/SettingsContainer"]
+layout_mode = 2
+text = "Point Right"
+
+[node name="PRSlider" type="HSlider" parent="Container/SettingsContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.005
+scrollable = false
+tick_count = 200
+ticks_on_borders = true
+
+[node name="PBText" type="Label" parent="Container/SettingsContainer"]
+layout_mode = 2
+text = "Point Bottom"
+
+[node name="PBSlider" type="HSlider" parent="Container/SettingsContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.005
+scrollable = false
+tick_count = 200
+ticks_on_borders = true
+
+[node name="DataContainer" type="HBoxContainer" parent="Container/SettingsContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RatioText" type="Label" parent="Container/SettingsContainer/DataContainer"]
+layout_mode = 2
+text = "Ratio: - (-)"
+
+[node name="Separator" type="VSeparator" parent="Container/SettingsContainer/DataContainer"]
+layout_mode = 2
+
+[node name="PointText" type="Label" parent="Container/SettingsContainer/DataContainer"]
+layout_mode = 2
+text = "L/T/R/B: -/-/-/-"
+
+[node name="OLText" type="Label" parent="Container/SettingsContainer"]
+layout_mode = 2
+text = "Offset Left"
+
+[node name="OLSlider" type="HSlider" parent="Container/SettingsContainer"]
+layout_mode = 2
+min_value = -200.0
+max_value = 200.0
+step = 5.0
+scrollable = false
+tick_count = 50
+ticks_on_borders = true
+
+[node name="OTText" type="Label" parent="Container/SettingsContainer"]
+layout_mode = 2
+text = "Offset Top"
+
+[node name="OTSlider" type="HSlider" parent="Container/SettingsContainer"]
+layout_mode = 2
+min_value = -200.0
+max_value = 200.0
+step = 5.0
+scrollable = false
+tick_count = 50
+ticks_on_borders = true
+
+[node name="ORText" type="Label" parent="Container/SettingsContainer"]
+layout_mode = 2
+text = "Offset Right"
+
+[node name="ORSlider" type="HSlider" parent="Container/SettingsContainer"]
+layout_mode = 2
+min_value = -200.0
+max_value = 200.0
+step = 5.0
+scrollable = false
+tick_count = 50
+ticks_on_borders = true
+
+[node name="OBText" type="Label" parent="Container/SettingsContainer"]
+layout_mode = 2
+text = "Offset Bottom"
+
+[node name="OBSlider" type="HSlider" parent="Container/SettingsContainer"]
+layout_mode = 2
+min_value = -200.0
+max_value = 200.0
+step = 5.0
+scrollable = false
+tick_count = 50
+ticks_on_borders = true
+
+[node name="OffsetText" type="Label" parent="Container/SettingsContainer"]
+layout_mode = 2
+text = "L/T/R/B: -/-/-/-"
+
+[node name="SetButton" type="Button" parent="Container/SettingsContainer"]
+layout_mode = 2
+text = "Set anchor settings"
+
+[node name="RemoveButton" type="Button" parent="Container/SettingsContainer"]
+layout_mode = 2
+text = "Remove object
+"
+
+[node name="FinishSeparator" type="HSeparator" parent="Container"]
+layout_mode = 2
+
+[node name="Output" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Out"
+horizontal_alignment = 2
+
+[connection signal="about_to_popup" from="Container/SelectButton" to="." method="_on_select_button_about_to_popup"]
+[connection signal="about_to_popup" from="Container/AddButton" to="." method="_on_add_button_about_to_popup"]
+[connection signal="toggled" from="Container/HighlightButton" to="." method="_on_highlight_button_toggled"]
+[connection signal="toggled" from="Container/SettingsButton" to="." method="_on_settings_button_toggled"]
+[connection signal="drag_ended" from="Container/SettingsContainer/PLSlider" to="." method="_slider_value_changed"]
+[connection signal="drag_ended" from="Container/SettingsContainer/PTSlider" to="." method="_slider_value_changed"]
+[connection signal="drag_ended" from="Container/SettingsContainer/PRSlider" to="." method="_slider_value_changed"]
+[connection signal="drag_ended" from="Container/SettingsContainer/PBSlider" to="." method="_slider_value_changed"]
+[connection signal="drag_ended" from="Container/SettingsContainer/OLSlider" to="." method="_slider_value_changed"]
+[connection signal="drag_ended" from="Container/SettingsContainer/OTSlider" to="." method="_slider_value_changed"]
+[connection signal="drag_ended" from="Container/SettingsContainer/ORSlider" to="." method="_slider_value_changed"]
+[connection signal="drag_ended" from="Container/SettingsContainer/OBSlider" to="." method="_slider_value_changed"]
+[connection signal="pressed" from="Container/SettingsContainer/SetButton" to="." method="_on_set_button_pressed"]
+[connection signal="pressed" from="Container/SettingsContainer/RemoveButton" to="." method="_on_remove_button_pressed"]

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://f5531jvppycq"]
+
+[node name="MenuSlot" type="LineEdit"]
+offset_right = 138.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Menu slot"
+alignment = 1

@@ -1,0 +1,148 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8stn4qwsv6ak"]
+
+[ext_resource type="Script" path="res://objects/main/main.gd" id="1_5xl4q"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+script = ExtResource("1_5xl4q")
+
+[node name="MainPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Editor" type="GraphEdit" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 257.0
+grow_horizontal = 2
+grow_vertical = 2
+scroll_offset = Vector2(-257, 0)
+minimap_enabled = false
+
+[node name="ToolsContainer" type="VBoxContainer" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 257.0
+grow_vertical = 2
+
+[node name="CreateButton" type="Button" parent="MainPanel/ToolsContainer"]
+layout_mode = 2
+text = "Create"
+
+[node name="ImportButton" type="Button" parent="MainPanel/ToolsContainer"]
+layout_mode = 2
+text = "Import"
+
+[node name="ExportButton" type="Button" parent="MainPanel/ToolsContainer"]
+layout_mode = 2
+disabled = true
+text = "Export"
+
+[node name="ShowButton" type="Button" parent="MainPanel/ToolsContainer"]
+layout_mode = 2
+disabled = true
+text = "Show"
+
+[node name="StartSeparator" type="HSeparator" parent="MainPanel/ToolsContainer"]
+layout_mode = 2
+
+[node name="NameText" type="Label" parent="MainPanel/ToolsContainer"]
+layout_mode = 2
+text = "Project name:"
+
+[node name="NameInput" type="LineEdit" parent="MainPanel/ToolsContainer"]
+layout_mode = 2
+placeholder_text = "Project name"
+alignment = 1
+
+[node name="AuthorText" type="Label" parent="MainPanel/ToolsContainer"]
+layout_mode = 2
+text = "Author:"
+
+[node name="AuthorInput" type="LineEdit" parent="MainPanel/ToolsContainer"]
+layout_mode = 2
+placeholder_text = "Author"
+alignment = 1
+
+[node name="ReplacementsText" type="Label" parent="MainPanel/ToolsContainer"]
+layout_mode = 2
+text = "Replacements JSON:"
+
+[node name="ReplacementsInput" type="CodeEdit" parent="MainPanel/ToolsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Replacements JSON"
+gutters_draw_breakpoints_gutter = true
+gutters_draw_bookmarks = true
+gutters_draw_executing_lines = true
+gutters_draw_line_numbers = true
+gutters_zero_pad_line_numbers = true
+gutters_draw_fold_gutter = true
+code_completion_enabled = true
+indent_use_spaces = true
+indent_automatic = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
+
+[node name="FinishSeparator" type="HSeparator" parent="MainPanel/ToolsContainer"]
+layout_mode = 2
+
+[node name="MainLabel" type="Label" parent="MainPanel/ToolsContainer"]
+layout_mode = 2
+text = "Visual Novel Development Studio
+ScriptWriter"
+vertical_alignment = 1
+
+[node name="VersionLabel" type="Label" parent="MainPanel/ToolsContainer"]
+layout_mode = 2
+text = "v. ---"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Menu" type="PopupMenu" parent="MainPanel"]
+size = Vector2i(200, 143)
+item_count = 1
+item_0/text = "Add Node"
+item_0/id = 0
+item_0/separator = true
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+position = Vector2i(0, 36)
+size = Vector2i(500, 500)
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.json ; VNDS JSON")
+use_native_dialog = true
+
+[node name="DirectoryDialog" type="FileDialog" parent="."]
+title = "Open a Directory"
+size = Vector2i(500, 500)
+file_mode = 2
+access = 2
+use_native_dialog = true
+
+[connection signal="connection_request" from="MainPanel/Editor" to="." method="_on_editor_connection_request"]
+[connection signal="disconnection_request" from="MainPanel/Editor" to="." method="_on_editor_disconnection_request"]
+[connection signal="node_deselected" from="MainPanel/Editor" to="." method="_on_editor_node_deselected"]
+[connection signal="node_selected" from="MainPanel/Editor" to="." method="_on_editor_node_selected"]
+[connection signal="pressed" from="MainPanel/ToolsContainer/CreateButton" to="." method="_on_create_button_pressed"]
+[connection signal="pressed" from="MainPanel/ToolsContainer/ImportButton" to="." method="_on_import_button_pressed"]
+[connection signal="pressed" from="MainPanel/ToolsContainer/ExportButton" to="." method="_on_export_button_pressed"]
+[connection signal="pressed" from="MainPanel/ToolsContainer/ShowButton" to="." method="_on_show_button_pressed"]
+[connection signal="index_pressed" from="MainPanel/Menu" to="." method="_on_menu_index_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="dir_selected" from="DirectoryDialog" to="." method="_on_directory_dialog_dir_selected"]
